@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.reedelk</groupId>
+        <artifactId>module-parent</artifactId>
+        <version>1.0.6</version>
+    </parent>
+
+    <version>1.0.6</version>
+    <artifactId>module-azure-storage</artifactId>
+
+    <packaging>bundle</packaging>
+
+    <properties>
+        <azure.storage.version>12.8.0</azure.storage.version>
+        <azure.core.http.netty>1.6.0</azure.core.http.netty>
+        <jackson.dataformat.xml.wstx.patch.version>2.11.2</jackson.dataformat.xml.wstx.patch.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-storage-blob</artifactId>
+            <version>${azure.storage.version}</version>
+            <exclusions>
+                <!-- dataformat-xml must be exclude because we must use the wstx-patch version below-->
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.dataformat</groupId>
+                    <artifactId>jackson-dataformat-xml</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-core-http-netty</artifactId>
+            <version>${azure.core.http.netty}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml-wstx-patch</artifactId>
+            <version>${jackson.dataformat.xml.wstx.patch.version}</version>
+        </dependency>
+    </dependencies>
+</project>
